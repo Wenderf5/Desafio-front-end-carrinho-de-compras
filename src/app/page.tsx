@@ -1,9 +1,18 @@
-import styles from "./page.module.css";
+import style from "./page.module.css";
+import { Header } from "@/components/header/header";
+import { Title } from "@/components/title/title";
+import { ListOfProducts } from "@/components/ListOfProducts/listOfProducts";
+import { Sumary_mobile } from "@/components/sumary_mobile/sumary_mobile";
 
 export default function Home() {
   return (
-    <main>
-      <h1>Carrinho de compras!</h1>
-    </main>
+    <>
+      <Header />
+      <main className={style.main}>
+        <Title />
+        <ListOfProducts />
+      </main>
+      <Sumary_mobile />
+    </>
   );
 }

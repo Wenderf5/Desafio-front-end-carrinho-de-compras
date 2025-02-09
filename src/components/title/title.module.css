@@ -1,0 +1,12 @@
+.container_title {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.container_title h1 {
+    color: black;
+    font-weight: 500;
+}
