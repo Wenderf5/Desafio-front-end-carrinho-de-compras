@@ -7,12 +7,15 @@ export function Cart() {
             <thead>
                 <tr>
                     <th className={style.th_product}>PRODUTO</th>
-                    <th className={style.th}>PREÇO</th>
-                    <th className={style.th}>QUANTIDADE</th>
-                    <th className={style.th}>TOTAL</th>
+                    <th>PREÇO</th>
+                    <th>QUANTIDADE</th>
+                    <th>TOTAL</th>
+                    <th></th>
                 </tr>
             </thead>
             <tbody>
+                <Product />
+                <Product />
                 <Product />
             </tbody>
         </table>

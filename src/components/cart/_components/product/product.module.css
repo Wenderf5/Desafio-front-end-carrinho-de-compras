@@ -1,0 +1,83 @@
+.tr {
+    border-bottom: 1px #6e6e6e solid;
+}
+
+.container_product {
+    display: flex;
+    align-items: center;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    padding-right: 5px;
+    gap: 15px;
+}
+
+.container_product p {
+    flex-grow: 1;
+    font-size: 0.9rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    word-break: break-word;
+}
+
+.price,
+.total,
+.container_btn_close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px 5px;
+}
+
+.price p,
+.total p,
+.container_btn_close p {
+    width: 100px;
+    font-size: 0.9rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.container_quantity {
+    display: flex;
+    align-items: center;
+    justify-content:space-around;
+    background-color: #f0f0f0;
+    padding: 5px 10px;
+    border-radius: 15px;
+}
+
+.container_quantity p {
+    width: 40px;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+.btn_minus_and_plus {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.btn_close {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: #ededed;
+    transition: 100ms;
+}
+
+.btn_close:hover {
+    background-color: #c1c1c1;
+}

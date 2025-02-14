@@ -1,5 +1,73 @@
-.sumary{
+.sumary {
     width: 30%;
-    height: 300px;
-    border: 1px black solid;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.resume {
+    border: 1px #d3d3d3 solid;
+}
+
+.purchase_summary {
+    width: 100%;
+    padding: 15px;
+    background-color: #f0f0f0;
+    border-bottom: 1px #d3d3d3 solid;
+}
+
+.container_prices_and_cupon {
+    display: flex;
+    flex-direction: column;
+    background-color: #f0f0f0;
+    border-bottom: 1px #d3d3d3 solid;
+    padding: 15px;
+    gap: 5px;
+}
+
+.container_sub_total,
+.container_freight {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.container_sub_total p,
+.container_freight p {
+    color: #696969;
+    font-size: 0.8rem;
+}
+
+.container_cupon {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.container_cupon p {
+    font-size: 0.8rem;
+    color: #509450;
+    cursor: pointer;
+}
+
+.container_total {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #e8e8e8;
+    padding: 15px;
+}
+
+.btn_checkout {
+    width: 100%;
+    padding: 10px;
+    background-color: #509450;
+    border: none;
+    color: white;
+    cursor: pointer;
+    transition: 100ms;
+}
+
+.btn_checkout:hover {
+    background-color: #447f44;
 }
