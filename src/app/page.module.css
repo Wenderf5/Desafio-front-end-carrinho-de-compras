@@ -1,6 +1,12 @@
 .main {
-    background-color: #ffffff;
     display: flex;
     flex-direction: column;
     align-items: center;
+    background-color: #ffffff;
+}
+
+.container_cart {
+    width: 95%;
+    display: flex;
+    gap: 20px;
 }

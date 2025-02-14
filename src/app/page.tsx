@@ -1,8 +1,8 @@
 import style from "./page.module.css";
 import { Header } from "@/components/header/header";
 import { Title } from "@/components/title/title";
-import { ListOfProducts } from "@/components/ListOfProducts/listOfProducts";
-import { Sumary_mobile } from "@/components/sumary_mobile/sumary_mobile";
+import { Cart } from "@/components/cart/cart";
+import { Sumary } from "@/components/sumary/sumary";
 
 export default function Home() {
   return (
@@ -10,9 +10,11 @@ export default function Home() {
       <Header />
       <main className={style.main}>
         <Title />
-        <ListOfProducts />
+        <div className={style.container_cart}>
+          <Cart />
+          <Sumary />
+        </div>
       </main>
-      <Sumary_mobile />
     </>
   );
 }

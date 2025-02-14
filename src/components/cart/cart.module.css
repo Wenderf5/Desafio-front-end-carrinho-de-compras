@@ -1,0 +1,22 @@
+.table {
+    width: 70%;
+    border-collapse: collapse;
+}
+
+.th_product {
+    width: 50%;
+    font-size: 0.8rem;
+    font-weight: 400;
+    text-align: start;
+    border-bottom: 1px #6e6e6e solid;
+    padding-bottom: 2px;
+    color: #494949;
+}
+
+.th {
+    font-size: 0.8rem;
+    font-weight: 400;
+    border-bottom: 1px #6e6e6e solid;
+    padding-bottom: 2px;
+    color: #494949;
+}

@@ -2,10 +2,12 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    padding: 10px;
-    background-color: #121212;
+    background-color: #0f0f0f;
+    padding: 20px;
 }
 
 .header p {
+    font-size: 1.2rem;
+    font-weight: 200;
     color: white;
 }
