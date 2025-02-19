@@ -3,7 +3,16 @@ import Image from 'next/image';
 import product_photo from '../../../../assets/placa de video.png';
 import { X, Plus, Minus } from 'lucide-react';
 
-export function Product() {
+interface props {
+    product: {
+        title: string,
+        price: string,
+        quantity: number,
+        total: string
+    }
+}
+
+export function Product({ product }: props) {
     return (
         <tr className={style.tr}>
             <td>
@@ -14,24 +23,24 @@ export function Product() {
                         width={80}
                         style={{ borderRadius: "5px" }}
                     />
-                    <p>Nome do produto Nome do produto Nome do produto Nome do produto Nome do produto</p>
+                    <p>{product.title}</p>
                 </div>
             </td>
             <td>
                 <div className={style.price}>
-                    <p>R$ 120,00</p>
+                    <p>R$ {product.price}</p>
                 </div>
             </td>
             <td>
                 <div className={style.container_quantity}>
                     <button className={style.btn_minus_and_plus}><Minus size={13} color='#2b2b2b' /></button>
-                    <p>100</p>
+                    <p>{product.quantity}</p>
                     <button className={style.btn_minus_and_plus}><Plus size={13} color='#2b2b2b' /></button>
                 </div>
             </td>
             <td>
                 <div className={style.total}>
-                    <p>R$ 1.200,00</p>
+                    <p>R$ {product.total}</p>
                 </div>
             </td>
             <td>

@@ -10,10 +10,10 @@ export default function Home() {
       <Header />
       <main className={style.main}>
         <Title />
-        <div className={style.container_cart}>
+        <section className={style.container_cart}>
           <Cart />
           <Sumary />
-        </div>
+        </section>
       </main>
     </>
   );

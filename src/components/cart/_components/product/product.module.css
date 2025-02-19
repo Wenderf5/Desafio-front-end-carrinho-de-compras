@@ -1,5 +1,11 @@
 .tr {
+    transition: 150ms;
     border-bottom: 1px #6e6e6e solid;
+}
+
+.tr:hover {
+    cursor: pointer;
+    background-color: #f5f5f5;
 }
 
 .container_product {
@@ -45,7 +51,7 @@
 .container_quantity {
     display: flex;
     align-items: center;
-    justify-content:space-around;
+    justify-content: space-around;
     background-color: #f0f0f0;
     padding: 5px 10px;
     border-radius: 15px;
