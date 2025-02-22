@@ -2,11 +2,11 @@ import style from './product.module.css';
 import Image from 'next/image';
 import product_photo from '../../../../assets/placa de video.png';
 import { X, Plus, Minus } from 'lucide-react';
-import { productUtils } from '@/utils/product';
+import { productUtils } from '@/utils/productUtils';
 
 interface props {
     product: {
-        id: number,
+        id: string,
         title: string,
         price: string,
         quantity: number,
@@ -21,10 +21,10 @@ export function Product({ product }: props) {
             method: 'DELETE'
         });
         if (response.status === 200) {
-            removeProduct(product.id);
+            await removeProduct(product.id);
         }
     }
-
+    
     return (
         <tr className={style.tr}>
             <td>

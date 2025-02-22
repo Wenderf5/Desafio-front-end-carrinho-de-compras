@@ -1,17 +1,17 @@
 'use client'
 
-import { products_interface } from "@/types/product";
+import { productInterface } from "@/types/productInterface";
 import { createContext, useContext, useState } from "react";
 
-interface products_context_interface {
-    products: products_interface[],
-    setProducts: React.Dispatch<React.SetStateAction<products_interface[]>>;
+interface productsContextInterface {
+    products: productInterface[],
+    setProducts: React.Dispatch<React.SetStateAction<productInterface[]>>;
 }
 
-const ProductsContext = createContext<products_context_interface | null>(null);
+const ProductsContext = createContext<productsContextInterface | null>(null);
 
 export function ProductsContextProvider({ children }: { children: React.ReactNode }) {
-    const [products, setProducts] = useState<products_interface[]>([]);
+    const [products, setProducts] = useState<productInterface[]>([]);
     return (
         <ProductsContext.Provider value={{ products, setProducts }}>
             {children}

@@ -1,5 +1,5 @@
-export interface products_interface {
-    id: number,
+export interface productInterface {
+    id: string,
     title: string,
     price: string,
     quantity: number,

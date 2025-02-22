@@ -17,7 +17,7 @@ export function Cart() {
                 method: 'GET'
             });
             const responseData = await response.json();
-            setProducts(responseData);
+            setProducts([...responseData]);
             setIsLoading(false);
         }
         fetchData();
