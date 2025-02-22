@@ -1,9 +1,28 @@
+'use client'
+
 import style from './cart.module.css';
-import { products_storage } from '@/storage/products';
+import { useProductsContext } from '@/context/products_context';
 import { Product } from './_components/product/product';
 import { Empty } from './_components/empty/empty';
+import { useEffect, useState } from 'react';
+import { Loading } from './_components/loading/loading';
 
 export function Cart() {
+    const { products, setProducts } = useProductsContext();
+    const [isLoading, setIsLoading] = useState<boolean>(true);
+
+    useEffect(() => {
+        async function fetchData() {
+            const response = await fetch('http://localhost:3000/api/product', {
+                method: 'GET'
+            });
+            const responseData = await response.json();
+            setProducts(responseData);
+            setIsLoading(false);
+        }
+        fetchData();
+    }, []);
+
     return (
         <div className={style.cotainer_cart}>
             <table className={style.table}>
@@ -17,7 +36,7 @@ export function Cart() {
                     </tr>
                 </thead>
                 <tbody>
-                    {products_storage.length === 0 ? <Empty /> : products_storage.map((item, index) => (
+                    {isLoading ? <Loading /> : products.length === 0 ? <Empty /> : products.map((item, index) => (
                         <Product key={index} product={item} />
                     ))}
                 </tbody>

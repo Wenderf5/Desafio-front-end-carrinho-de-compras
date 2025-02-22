@@ -1,7 +1,35 @@
+'use client'
+
 import style from './sumary.module.css';
 import { ArrowRight } from 'lucide-react';
+import { useProductsContext } from '@/context/products_context';
+import { products_interface } from '@/types/product';
+import { productUtils } from '@/utils/product';
 
 export function Sumary() {
+    const { products } = useProductsContext();
+    const { addProduct } = productUtils();
+
+    async function addNewProduct() {
+        const newProduct: products_interface = {
+            id: products.length + 1,
+            title: "Nome do produto Nome do produto Nome do produto Nome do produto Nome do produto",
+            price: "120,00",
+            quantity: 100,
+            total: "1.200,00"
+        }
+        const response = await fetch('http://localhost:3000/api/product', {
+            headers: {
+                'contentType': 'application/json'
+            },
+            method: 'POST',
+            body: JSON.stringify({ product: newProduct })
+        });
+        if (response.status === 200) {
+            addProduct(newProduct);
+        }
+    }
+
     return (
         <div className={style.sumary}>
             <div className={style.resume}>
@@ -26,6 +54,7 @@ export function Sumary() {
                 </div>
             </div>
             <button className={style.btn_checkout}>Comprar</button>
+            <button onClick={addNewProduct}>Adicionar produto</button>
         </div>
     )
 }

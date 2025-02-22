@@ -2,9 +2,11 @@ import style from './product.module.css';
 import Image from 'next/image';
 import product_photo from '../../../../assets/placa de video.png';
 import { X, Plus, Minus } from 'lucide-react';
+import { productUtils } from '@/utils/product';
 
 interface props {
     product: {
+        id: number,
         title: string,
         price: string,
         quantity: number,
@@ -13,6 +15,16 @@ interface props {
 }
 
 export function Product({ product }: props) {
+    const { removeProduct } = productUtils();
+    async function deleteProduct() {
+        const response = await fetch(`http://localhost:3000/api/product/${product.id}`, {
+            method: 'DELETE'
+        });
+        if (response.status === 200) {
+            removeProduct(product.id);
+        }
+    }
+
     return (
         <tr className={style.tr}>
             <td>
@@ -45,7 +57,7 @@ export function Product({ product }: props) {
             </td>
             <td>
                 <div className={style.container_btn_close}>
-                    <button className={style.btn_close}><X size={16} color='#2b2b2b' /></button>
+                    <button onClick={deleteProduct} className={style.btn_close}><X size={16} color='#2b2b2b' /></button>
                 </div>
             </td>
         </tr >
