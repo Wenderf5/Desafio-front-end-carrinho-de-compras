@@ -3,19 +3,23 @@ import Image from 'next/image';
 import product_photo from '../../../../assets/placa de video.png';
 import { X, Plus, Minus } from 'lucide-react';
 import { productUtils } from '@/utils/productUtils';
+import { formatCurrency } from '@/utils/formatCurrency';
+import { useEffect, useState } from 'react';
 
 interface props {
     product: {
         id: string,
         title: string,
-        price: string,
+        price: number,
         quantity: number,
-        total: string
+        total: number
     }
 }
 
 export function Product({ product }: props) {
-    const { removeProduct } = productUtils();
+    const [quantity, setQuantity] = useState(product.quantity);
+    const { removeProduct, updateQuantityProduct } = productUtils();
+
     async function deleteProduct() {
         const response = await fetch(`http://localhost:3000/api/product/${product.id}`, {
             method: 'DELETE'
@@ -24,7 +28,41 @@ export function Product({ product }: props) {
             await removeProduct(product.id);
         }
     }
-    
+
+    async function decrementQuantity() {
+        if (quantity >= 2) {
+            const response = await fetch(`http://localhost:3000/api/product/${product.id}`, {
+                headers: {
+                    'contentType': 'application/json'
+                },
+                method: 'PATCH',
+                body: JSON.stringify({
+                    newQuantity: quantity - 1
+                })
+            });
+            if (response.status === 200) {
+                await updateQuantityProduct(product.id, quantity - 1);
+                setQuantity(quantity - 1);
+            }
+        }
+    }
+
+    async function incrementQuantity() {
+        const response = await fetch(`http://localhost:3000/api/product/${product.id}`, {
+            headers: {
+                'contentType': 'application/json'
+            },
+            method: 'PATCH',
+            body: JSON.stringify({
+                newQuantity: quantity + 1
+            })
+        });
+        if (response.status === 200) {
+            await updateQuantityProduct(product.id, quantity + 1);
+            setQuantity(quantity + 1);
+        }
+    }
+
     return (
         <tr className={style.tr}>
             <td>
@@ -40,19 +78,19 @@ export function Product({ product }: props) {
             </td>
             <td>
                 <div className={style.price}>
-                    <p>R$ {product.price}</p>
+                    <p>{formatCurrency(product.price)}</p>
                 </div>
             </td>
             <td>
                 <div className={style.container_quantity}>
-                    <button className={style.btn_minus_and_plus}><Minus size={13} color='#2b2b2b' /></button>
-                    <p>{product.quantity}</p>
-                    <button className={style.btn_minus_and_plus}><Plus size={13} color='#2b2b2b' /></button>
+                    <button onClick={decrementQuantity} className={style.btn_minus_and_plus}><Minus size={13} color='#2b2b2b' /></button>
+                    <p>{quantity}</p>
+                    <button onClick={incrementQuantity} className={style.btn_minus_and_plus}><Plus size={13} color='#2b2b2b' /></button>
                 </div>
             </td>
             <td>
                 <div className={style.total}>
-                    <p>R$ {product.total}</p>
+                    <p>{formatCurrency(product.total)}</p>
                 </div>
             </td>
             <td>

@@ -1,8 +1,8 @@
-import { useProductsContext } from "@/context/products_context";
+import { useProductContext } from "@/context/productContext";
 import { productInterface } from "@/types/productInterface";
 
 export function productUtils() {
-    const { products, setProducts } = useProductsContext();
+    const { products, setProducts } = useProductContext();
 
     async function addProduct(value: productInterface) {
         await new Promise((resolve, reject) => {
@@ -29,5 +29,18 @@ export function productUtils() {
             }
         });
     }
-    return { addProduct, removeProduct };
+
+
+    async function updateQuantityProduct(id: string, quantity: number) {
+        await new Promise((resolve, reject) => {
+            try {
+                setProducts(products.map((item) => (item.id === id ? { ...item, quantity: quantity, total: quantity * item.price } : item)));
+                resolve("Produto atualizado com sucesso!");
+            } catch (error) {
+                reject("Erro ao atualizar o produto!");
+            }
+        });
+    }
+
+    return { addProduct, removeProduct, updateQuantityProduct };
 }

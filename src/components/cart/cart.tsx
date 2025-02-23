@@ -1,14 +1,14 @@
 'use client'
 
 import style from './cart.module.css';
-import { useProductsContext } from '@/context/products_context';
+import { useProductContext } from '@/context/productContext';
 import { Product } from './_components/product/product';
 import { Empty } from './_components/empty/empty';
 import { useEffect, useState } from 'react';
 import { Loading } from './_components/loading/loading';
 
 export function Cart() {
-    const { products, setProducts } = useProductsContext();
+    const { products, setProducts } = useProductContext();
     const [isLoading, setIsLoading] = useState<boolean>(true);
 
     useEffect(() => {

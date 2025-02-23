@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { ProductsContextProvider } from "@/context/products_context";
+import { ProductContextProvider } from "@/context/productContext";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,12 +24,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <ProductsContextProvider>
+    <ProductContextProvider>
       <html lang="pt-br">
         <body className={`${geistSans.variable} ${geistMono.variable}`}>
           {children}
         </body>
       </html>
-    </ProductsContextProvider>
+    </ProductContextProvider>
   );
 }

@@ -71,3 +71,14 @@
 .btn_checkout:hover {
     background-color: #447f44;
 }
+
+
+
+.btn_checkout_none {
+    width: 100%;
+    padding: 10px;
+    background-color: #509450c0;
+    border: none;
+    color: white;
+    pointer-events: none;
+}

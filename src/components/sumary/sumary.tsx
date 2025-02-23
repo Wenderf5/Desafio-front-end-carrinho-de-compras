@@ -5,17 +5,22 @@ import { ArrowRight } from 'lucide-react';
 import { productInterface } from '@/types/productInterface';
 import { productUtils } from '@/utils/productUtils';
 import { v4 as uuidv4 } from 'uuid';
+import { formatCurrency } from '@/utils/formatCurrency';
+import { getPrices } from '@/utils/getPrices';
+import { useProductContext } from '@/context/productContext';
 
 export function Sumary() {
+    const { products } = useProductContext();
+    const { getSubTotal, getFreight, getTotal } = getPrices();
     const { addProduct } = productUtils();
-    
+
     async function addNewProductToCart() {
         const newProduct: productInterface = {
             id: uuidv4(),
             title: "Nome do produto Nome do produto Nome do produto Nome do produto Nome do produto",
-            price: "120,00",
-            quantity: 100,
-            total: "1.200,00"
+            price: 120.00,
+            quantity: 1,
+            total: 120.00
         }
         const response = await fetch('http://localhost:3000/api/product', {
             headers: {
@@ -38,11 +43,11 @@ export function Sumary() {
                 <div className={style.container_prices_and_cupon}>
                     <div className={style.container_sub_total}>
                         <p>Sub total</p>
-                        <p>R$ 410,00</p>
+                        <p>{formatCurrency(getSubTotal())}</p>
                     </div>
                     <div className={style.container_freight}>
                         <p>Frete</p>
-                        <p>R$ 34,00</p>
+                        <p>{formatCurrency(getFreight())}</p>
                     </div>
                     <div className={style.container_cupon}>
                         <p>Adicionar cupom</p>
@@ -51,10 +56,10 @@ export function Sumary() {
                 </div>
                 <div className={style.container_total}>
                     <p>Total</p>
-                    <p>R$ 444,00</p>
+                    <p>{formatCurrency(getTotal())}</p>
                 </div>
             </div>
-            <button className={style.btn_checkout}>Comprar</button>
+            <button className={products.length < 1 ? style.btn_checkout_none : style.btn_checkout}>Comprar</button>
             <button onClick={addNewProductToCart}>Adicionar produto</button>
         </div>
     )
