@@ -18,9 +18,9 @@ export function Sumary() {
         const newProduct: productInterface = {
             id: uuidv4(),
             title: "Nome do produto Nome do produto Nome do produto Nome do produto Nome do produto",
-            price: 120.00,
+            price: 120.39,
             quantity: 1,
-            total: 120.00
+            total: 120.39
         }
         const response = await fetch('http://localhost:3000/api/product', {
             headers: {

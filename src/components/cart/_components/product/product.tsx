@@ -4,7 +4,7 @@ import product_photo from '../../../../assets/placa de video.png';
 import { X, Plus, Minus } from 'lucide-react';
 import { productUtils } from '@/utils/productUtils';
 import { formatCurrency } from '@/utils/formatCurrency';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 interface props {
     product: {

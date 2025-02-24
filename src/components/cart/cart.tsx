@@ -36,8 +36,8 @@ export function Cart() {
                     </tr>
                 </thead>
                 <tbody>
-                    {isLoading ? <Loading /> : products.length === 0 ? <Empty /> : products.map((item, index) => (
-                        <Product key={index} product={item} />
+                    {isLoading ? <Loading /> : products.length === 0 ? <Empty /> : products.map((item) => (
+                        <Product key={item.id} product={item} />
                     ))}
                 </tbody>
             </table>
